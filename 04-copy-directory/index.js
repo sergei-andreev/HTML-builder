@@ -1,11 +1,11 @@
-const {readdir, mkdir, copyFile, rmdir, stat} = require('fs').promises;
+const {readdir, mkdir, copyFile, rm} = require('fs').promises;
 const {join} = require('path');
 
 const copyDir = async (sourceFolder) => {
     const distFolder = join(__dirname, 'files-copy');
 
     try {
-        await rmdir(distFolder, {recursive: true});
+        await rm(distFolder, {recursive: true});
     } catch (error) {
         if (error.code !== 'ENOENT') {
             throw err;
